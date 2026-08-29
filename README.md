@@ -331,26 +331,23 @@ helpdesk-control-tower/
 │
 ├── README.md
 │
-├── PowerBI/
-│   │
-│   ├── Helpdesk_Control_Tower.pbix
-│   │
-│   └── Screenshots/
-│       │
-│       ├── Overview.png
-│       ├── Ticket_Resolution.png
-│       ├── Workflow_Bottlenecks.png
-│       ├── Assignee_Workload.png
-│       │
-│       └── Demo/
-│           └── Dashboard_Walkthrough.gif
+│
+├── Demo/
+│   └── Dashboard_Walkthrough.gif
 │
 └── Documentation/
-    │
-    ├── Data_Dictionary.md
-    ├── Data_Cleaning.md
-    ├── DAX_Measures.md
-    └── Interview_QA.md
+|    ├── Data_Dictionary.md
+|    └── KPI_Definitions.md
+|
+├── PowerBI/
+│   └── Helpdesk_Control_Tower.pbix
+│
+├── Screenshots/
+│   ├── Overview.png
+│   ├── Ticket_Resolution.png
+│   ├── Workflow_Bottlenecks.png
+│   └── Assignee_Workload.png
+    └── Homepage.png
 
 
 
