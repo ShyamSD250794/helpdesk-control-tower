@@ -6,7 +6,7 @@ A Power BI dashboard designed to analyze helpdesk ticket operations, resolution 
 
 ## 📊 Dashboard Demo
 
-![Dashboard Walkthrough](PowerBI/Screenshots/Demo/Dashboard_Walkthrough.gif)
+![Dashboard Walkthrough](Demo/Dashboard_Walkthrough.gif)
 
 ---
 
