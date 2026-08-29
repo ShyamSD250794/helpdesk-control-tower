@@ -89,68 +89,101 @@ These KPIs focus on the time required to resolve, handle, or progress tickets th
 
 ### Resolution Performance
 
-**Latest Month**
+## Resolution Performance
+
+### Latest Month
 
 **Definition:**  
-Represents the resolution duration for the latest month available within the selected dashboard context.
+Represents the average resolution duration for the latest month available within the selected dashboard context.
 
 **Business purpose:**  
-Provides a recent view of ticket resolution performance and allows the current month's result to be compared with the previous month.
+Provides a recent view of how quickly helpdesk tickets are being resolved. Lower resolution duration indicates faster ticket resolution and therefore better resolution performance.
 
 **Dashboard display:**  
 **1.6 days**
 
-
-**vs previous month**
-
-The KPI card provides a comparison between the latest month's resolution performance and the corresponding previous-month value.
-
-**Dashboard display:**  
-**+0.3 days**
-
-
-### Handling Efficiency
-
-**Latest Month**
+### vs previous month
 
 **Definition:**  
-Represents the handling duration for the latest month available within the selected dashboard context.
+Shows the percentage change in resolution duration compared with the previous month.
+
+**Dashboard display:**  
+**▼ 75.4%**
+
+**Interpretation:**  
+The downward change indicates that the resolution duration decreased compared with the previous month. Since lower resolution time represents better performance, this indicates an improvement in resolution performance.
+
+---
+
+## Handling Efficiency
+
+### Latest Month
+
+**Definition:**  
+Represents the average handling duration for the latest month available within the selected dashboard context.
 
 **Business purpose:**  
-Provides a recent view of handling efficiency and allows the current month's result to be compared with the previous month.
+Provides a recent view of how efficiently tickets are being handled. Lower handling duration indicates that tickets are requiring less active handling time.
 
 **Dashboard display:**  
 **0.81 days**
 
-
-**vs previous month**
-
-The KPI card provides a comparison between the latest month's handling duration and the corresponding previous-month value.
-
-**Dashboard display:**  
-**+0.09 days**
-
-
-### Waiting Bottleneck
-
-**Average**
+### vs previous month
 
 **Definition:**  
-Represents the average waiting time associated with tickets in waiting-related workflow states.
+Shows the percentage change in handling duration compared with the previous month.
+
+**Dashboard display:**  
+**▼ 79.0%**
+
+**Interpretation:**  
+The downward change indicates that handling duration decreased compared with the previous month. Since lower handling time indicates greater handling efficiency, this represents an improvement.
+
+---
+
+## Waiting Bottleneck
+
+### Average
+
+**Definition:**  
+Represents the average waiting time associated with tickets within the selected dashboard context.
 
 **Business purpose:**  
-Highlights the amount of time tickets spend waiting and provides an indicator of potential workflow bottlenecks.
+Highlights the amount of time tickets spend waiting within the helpdesk workflow. High waiting time can indicate process delays, approval dependencies, handoffs, or other workflow bottlenecks.
 
 **Dashboard display:**  
 **19.90 days**
 
+### vs previous month
 
-**vs previous month**
-
-The KPI card provides a comparison between the current waiting-bottleneck value and the corresponding previous-month value.
+**Definition:**  
+Shows the percentage change in average waiting time compared with the previous month.
 
 **Dashboard display:**  
-**+3.70 days**
+**▼ 72.4%**
+
+**Interpretation:**  
+The downward change indicates that average waiting time decreased compared with the previous month. A reduction in waiting time indicates that workflow delays have decreased.
+
+---
+
+## KPI Comparison Logic
+
+The three KPI cards display the latest available performance value together with a comparison against the previous month.
+
+For duration-based KPIs, the percentage comparison represents the relative change in the KPI value between the latest month and the previous month.
+
+A downward percentage indicates that the measured duration has decreased.
+
+For the duration-based KPIs used in this dashboard:
+
+- Lower **Resolution Performance** duration indicates faster resolution.
+- Lower **Handling Efficiency** duration indicates less handling time.
+- Lower **Waiting Bottleneck** duration indicates less workflow waiting time.
+
+Therefore, a downward percentage change represents an improvement for all three KPIs.
+
+> **Note:** The dashboard displays the month-over-month comparison as a percentage. The displayed percentage should not be interpreted as an absolute change in days.
 
 
 ---
