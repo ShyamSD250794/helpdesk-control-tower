@@ -361,13 +361,15 @@ Power Query query.
 
 ---
 
-14. Ticket Summary Column Transformations
+# 14. Ticket Summary Column Transformations
 
-Column duplication was used to create working copies of source fields before applying transformations.
+Column duplication was used to create working copies of source fields
+before applying transformations.
 
 Columns were then renamed where necessary to make their purpose clearer.
 
-Data types were explicitly changed so that Power BI would interpret the resulting fields correctly.
+Data types were explicitly changed so that Power BI would interpret the
+resulting fields correctly.
 
 Unnecessary fields were subsequently removed from the analytical view.
 
@@ -375,100 +377,130 @@ A custom field was also added for resolution-date display.
 
 The custom transformation used the following logic:
 
-Date.ToText(
-    Date.From([issue_resolution_date]),
-    "dd-MMM-yyyy"
-)
+    Date.ToText(
+        Date.From([issue_resolution_date]),
+        "dd-MMM-yyyy"
+    )
 
-This converts the resolution datetime into a formatted display value such as:
+This converts the resolution datetime into a formatted display value such
+as:
 
-06-Jan-2016
+`06-Jan-2016`
 
-The display field is separate from the underlying date value used for analysis.
+The display field is separate from the underlying date value used for
+analysis.
 
-15. Ticket Resolution Transformation
+---
+
+# 15. Ticket Resolution Transformation
 
 A dedicated Power Query view was created for ticket-resolution analysis:
 
-vw_Ticket_Resolution
+`vw_Ticket_Resolution`
 
-The view was designed to contain the fields required for analysing resolved tickets and their resolution timing.
+The view was designed to contain the fields required for analysing resolved
+tickets and their resolution timing.
 
 The query contains the following transformation steps:
 
-Source
-Navigation
-Duplicated Column
-Renamed Columns
-Extracted Date
-Changed Type
-Renamed Columns1
-Removed Columns
+1. `Source`
+2. `Navigation`
+3. `Duplicated Column`
+4. `Renamed Columns`
+5. `Extracted Date`
+6. `Changed Type`
+7. `Renamed Columns1`
+8. `Removed Columns`
 
-The Extracted Date step separates the date component from the relevant datetime field so that the resulting value can be used for date-based analysis.
+The **Extracted Date** step separates the date component from the relevant
+datetime field so that the resulting value can be used for date-based
+analysis.
 
-The Changed Type step ensures that the extracted value is treated as an appropriate date/data type in Power BI.
+The **Changed Type** step ensures that the extracted value is treated as an
+appropriate date/data type in Power BI.
 
-The final Removed Columns step removes fields that are no longer required in the analytical view.
+The final **Removed Columns** step removes fields that are no longer required
+in the analytical view.
 
-The resulting vw_Ticket_Resolution query provides a focused dataset for analysing ticket resolution performance rather than carrying the complete source structure into the dashboard.
+The resulting `vw_Ticket_Resolution` query provides a focused dataset for
+analysing ticket resolution performance rather than carrying the complete
+source structure into the dashboard.
 
-16. Creating a Resolution Date for Analysis
+---
 
-The resolution datetime was also transformed into a proper date value where
+# 16. Creating a Resolution Date for Analysis
+
+The resolution datetime was transformed into a proper date value where
 required for analytical use.
 
 The purpose of this transformation is to separate:
 
-The underlying date used for calculations and filtering
-The formatted display value used for presentation
+- The underlying date used for calculations and filtering
+- The formatted display value used for presentation
 
 This distinction is important because formatted text should not be used as a
 substitute for an actual date field in analytical calculations.
 
-17. Building the Ticket Resolution View
+The analytical date field can be used for:
+
+- Monthly grouping
+- Latest-month identification
+- Previous-month comparison
+- Date filtering
+- Time-based analysis
+
+The formatted resolution-date field is used for readable presentation, while
+the underlying date value remains available for analytical calculations.
+
+---
+
+# 17. Building the Ticket Resolution View
 
 A dedicated Power Query view was created for ticket-resolution analysis:
 
-vw_Ticket_Resolution
+`vw_Ticket_Resolution`
 
 The view was designed to contain the fields required for analysing resolved
 tickets and their resolution timing.
 
 The query contains transformations including:
 
-Source navigation
-Column duplication where required
-Column renaming
-Date extraction
-Data type changes
-Removal of temporary or presentation-only columns
+- Source navigation
+- Column duplication where required
+- Column renaming
+- Date extraction
+- Data type changes
+- Removal of temporary or presentation-only columns
 
-The resulting view contains a focused set of fields for the resolution
-analysis rather than carrying the full source structure into the dashboard.
+The resulting view contains a focused set of fields for resolution analysis
+rather than carrying the full source structure into the dashboard.
 
-18. Building the Ticket Summary View
+---
+
+# 18. Building the Ticket Summary View
 
 A separate analytical view was created:
 
-vw_Ticket_Summary
+`vw_Ticket_Summary`
 
 This view was designed as a compact ticket-level dataset for dashboard
 analysis.
 
 The query contains transformations including:
 
-Source navigation
-Column duplication
-Column renaming
-Data type changes
-Removal of intermediate columns
-Creation of the resolution display field
+- Source navigation
+- Column duplication
+- Column renaming
+- Data type changes
+- Removal of intermediate columns
+- Creation of the resolution display field
 
-The final query was kept narrower than the original source dataset so that the
-dashboard could work with fields relevant to ticket-level analysis.
+The final query was kept narrower than the original source dataset so that
+the dashboard could work with fields relevant to ticket-level analysis.
 
-19. Removing Intermediate / Temporary Columns
+---
+
+# 19. Removing Intermediate / Temporary Columns
 
 Some columns were created temporarily during transformation.
 
@@ -484,17 +516,19 @@ was deleted.
 It means that the intermediate field was no longer required in the final
 query output.
 
-20. Data Type Standardisation
+---
+
+# 20. Data Type Standardisation
 
 Data types were explicitly changed during the Power Query process where
 required.
 
 This was particularly important for:
 
-Numeric identifiers
-Date fields
-Datetime fields
-Calculated or derived fields
+- Numeric identifiers
+- Date fields
+- Datetime fields
+- Calculated or derived fields
 
 Correct data types ensure that Power BI can perform calculations, sorting,
 filtering and time-based analysis correctly.
@@ -502,7 +536,9 @@ filtering and time-based analysis correctly.
 For example, a resolution date should remain a date/datetime value for
 analytical purposes rather than being converted to text merely for display.
 
-21. Duplicate Handling
+---
+
+# 21. Duplicate Handling
 
 No blanket duplicate-removal operation was applied to the source dataset.
 
@@ -513,12 +549,12 @@ mean that a ticket record is a duplicate.
 
 Fields such as:
 
-issue_reporter
-issue_assignee
-issue_proj
-issue_type
-issue_priority
-issue_status
+- `issue_reporter`
+- `issue_assignee`
+- `issue_proj`
+- `issue_type`
+- `issue_priority`
+- `issue_status`
 
 are expected to contain repeated values across many legitimate tickets.
 
@@ -528,13 +564,15 @@ than once.
 No claim is made that duplicate source records were removed unless an explicit
 deduplication transformation was actually applied.
 
-22. Null and Missing Values
+---
+
+# 22. Null and Missing Values
 
 Missing values were retained where they represented legitimate missing
 information in the source data.
 
 For example, some records contain blank or null values for fields such as
-issue_assignee.
+`issue_assignee`.
 
 A missing assignee does not necessarily represent a bad record. It may indicate
 that the ticket had not been assigned or that the source system did not contain
@@ -546,7 +584,9 @@ values.
 This prevents the cleaning process from introducing information that was not
 present in the source data.
 
-23. Source Columns vs Analytical Columns
+---
+
+# 23. Source Columns vs Analytical Columns
 
 The original dataset contains substantially more fields than are required for
 every dashboard view.
@@ -558,26 +598,30 @@ purposes.
 The project therefore uses separate views for different dashboard areas,
 including:
 
-vw_Ticket_Summary
-vw_Ticket_Resolution
-vw_Workflow_Analysis
-vw_Assignee_Workload
+- `vw_Ticket_Summary`
+- `vw_Ticket_Resolution`
+- `vw_Workflow_Analysis`
+- `vw_Assignee_Workload`
 
 This approach keeps the Power BI model more focused and makes each analytical
 view easier to understand.
 
-24. Refresh Metadata
+---
+
+# 24. Refresh Metadata
 
 A separate query named:
 
-Refresh Metadata
+`Refresh Metadata`
 
 was retained as part of the Power Query structure.
 
 This provides supporting metadata for the refresh process rather than forming
 part of the primary ticket-level analytical dataset.
 
-25. Final Power Query Output
+---
+
+# 25. Final Power Query Output
 
 The cleaned and transformed data is not represented by a single copy of the
 original raw table.
@@ -587,37 +631,39 @@ and the Power BI analytical model.
 
 The workflow can therefore be represented as:
 
-Source Dataset
+**Source Dataset**
 
 ↓
 
-Power Query Transformations
+**Power Query Transformations**
 
 ↓
 
-Analytical Views
+**Analytical Views**
 
 ↓
 
-Power BI Data Model
+**Power BI Data Model**
 
 ↓
 
-Dashboard KPIs and Visualisations
+**Dashboard KPIs and Visualisations**
 
-26. Cleaning Philosophy
+---
+
+# 26. Cleaning Philosophy
 
 The objective of the cleaning process was not to make the dataset artificially
 perfect.
 
 The objective was to make the source data:
 
-Structurally consistent
-Correctly typed
-Suitable for analysis
-Easier to interpret
-Appropriate for Power BI modelling
-Suitable for dashboard presentation
+- Structurally consistent
+- Correctly typed
+- Suitable for analysis
+- Easier to interpret
+- Appropriate for Power BI modelling
+- Suitable for dashboard presentation
 
 Where the source contained legitimate missing information, that information
 was not automatically fabricated or overwritten.
@@ -625,7 +671,9 @@ was not automatically fabricated or overwritten.
 Where a transformation was required for analysis or presentation, it was
 performed in Power Query rather than manually altering the source dataset.
 
-27. Important Note on the Original Dataset
+---
+
+# 27. Important Note on the Original Dataset
 
 The project uses the Helpdesk Tickets dataset published on Mendeley Data.
 
@@ -639,43 +687,47 @@ free of data-quality issues.
 Instead, this document records the transformations that were actually
 performed before the data was used for reporting.
 
-28. Final Cleaning Result
+---
+
+# 28. Final Cleaning Result
 
 The final Power Query layer provides structured analytical views that support
 the dashboard's primary areas:
 
-Ticket resolution analysis
-Workflow analysis
-Assignee workload analysis
-Ticket-level summary analysis
+- Ticket resolution analysis
+- Workflow analysis
+- Assignee workload analysis
+- Ticket-level summary analysis
 
 These outputs are then used by the Power BI model to calculate and display
 the project's key performance indicators:
 
-Resolution Performance
-Handling Efficiency
-Waiting Bottleneck
+- **Resolution Performance**
+- **Handling Efficiency**
+- **Waiting Bottleneck**
 
 The cleaning process therefore serves as the preparation layer between the
 raw helpdesk dataset and the final Helpdesk Control Tower dashboard.
 
-Summary
+---
+
+# Summary
 
 The overall data-preparation workflow is:
 
-Mendeley Helpdesk Dataset
+**Mendeley Helpdesk Dataset**
 
-→ tblIssues
+→ **`tblIssues`**
 
-→ Data Profiling
+→ **Data Profiling**
 
-→ Power Query Cleaning & Transformation
+→ **Power Query Cleaning & Transformation**
 
-→ Focused Analytical Views
+→ **Focused Analytical Views**
 
-→ Power BI Data Model
+→ **Power BI Data Model**
 
-→ KPIs & Dashboard
+→ **KPIs & Dashboard**
 
 The documented transformations focus on data typing, date handling, column
 management, analytical view creation and presentation-ready fields while
