@@ -357,5 +357,41 @@ helpdesk-control-tower/
     ├── Ticket_Resolution.png
     ├── Workflow_Bottlenecks.png
     └── Assignee_Workload.png
+```
+
+## 👤 Author
+
+### Shyam Das
+
+Business Intelligence / Data Analytics Portfolio Project
+
+### Project Focus
+
+- Power BI Dashboard Development
+- Power Query Data Transformation
+- DAX
+- Data Cleaning
+- Data Profiling
+- Operational Analytics
+- KPI Development
+- Business Intelligence Reporting
+
+GitHub: [ShyamSD250794](https://github.com/ShyamSD250794)
+
+---
+
+## 📌 Disclaimer
+
+This project is an independent portfolio project created using a publicly available and anonymized helpdesk dataset.
+
+The dashboard, data transformations, analytical model, KPIs, visualizations, and business interpretation presented in this repository were developed independently for portfolio and learning purposes.
+
+The project is not affiliated with the organization from which the original helpdesk data was collected.
+
+The underlying dataset remains subject to its original licensing and attribution requirements.
+
+
+
+
 
 
